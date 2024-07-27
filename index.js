@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: false }))
 dotenv.config()
 
 // Routes
-
 app.use('/api/movies', movieRoute)
 app.use('/api/categories', categoryRoute)
 app.use('/api/actors', actorRoute)

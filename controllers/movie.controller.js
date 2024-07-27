@@ -3,10 +3,8 @@ const Movie = require('../models/movie.model.js')
 
 const getMovies = async (req, res) => {
     try {
-        const { name } = req.query
-        const { category } = req.query
-        const { actor } = req.query
-        const { type } = req.query
+        const { name, category, actor, type } = req.query
+
         let query = {}
         if (name) {
             query.name = { $regex: name, $options: 'i' };
@@ -16,11 +14,11 @@ const getMovies = async (req, res) => {
             query.categories = { $in: category }
         }
 
-        if(actor && mongoose.Types.ObjectId.isValid(actor)){
+        if (actor && mongoose.Types.ObjectId.isValid(actor)) {
             query.actors = { $in: actor }
         }
 
-        if(type && mongoose.Types.ObjectId.isValid(type)){
+        if (type && mongoose.Types.ObjectId.isValid(type)) {
             query.type = type
         }
 
