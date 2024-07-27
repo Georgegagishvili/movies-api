@@ -13,6 +13,7 @@ async function insertMovies() {
         mongoose.connection.close();
         return;
     }
+
     const movies = [
         {
             name: 'The Avengers',
@@ -25,7 +26,8 @@ async function insertMovies() {
             quality: ['HD', '4K'],
             duration: '143 min',
             rating: 8.0,
-            actors: [actors[0]._id, actors[1]._id]
+            actors: [actors[0]._id, actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/3861963/pexels-photo-3861963.jpeg'
         },
         {
             name: 'Inception',
@@ -38,9 +40,9 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '148 min',
             rating: 8.8,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/1683025/pexels-photo-1683025.jpeg'
         },
-        // Add 20 more movies
         {
             name: 'Interstellar',
             description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
@@ -52,7 +54,8 @@ async function insertMovies() {
             quality: ['HD', '4K'],
             duration: '169 min',
             rating: 8.6,
-            actors: [actors[0]._id]
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/209730/pexels-photo-209730.jpeg'
         },
         {
             name: 'The Dark Knight',
@@ -65,7 +68,8 @@ async function insertMovies() {
             quality: ['HD', '4K'],
             duration: '152 min',
             rating: 9.0,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/1397011/pexels-photo-1397011.jpeg'
         },
         {
             name: 'The Matrix',
@@ -78,7 +82,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '136 min',
             rating: 8.7,
-            actors: [actors[0]._id]
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/3450031/pexels-photo-3450031.jpeg'
         },
         {
             name: 'Avatar',
@@ -91,7 +96,8 @@ async function insertMovies() {
             quality: ['HD', '4K'],
             duration: '162 min',
             rating: 7.8,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/1630375/pexels-photo-1630375.jpeg'
         },
         {
             name: 'Gladiator',
@@ -104,7 +110,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '155 min',
             rating: 8.5,
-            actors: [actors[0]._id]
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/1045559/pexels-photo-1045559.jpeg'
         },
         {
             name: 'The Shawshank Redemption',
@@ -117,7 +124,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '142 min',
             rating: 9.3,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/1657346/pexels-photo-1657346.jpeg'
         },
         {
             name: 'Forrest Gump',
@@ -130,7 +138,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '142 min',
             rating: 8.8,
-            actors: [actors[0]._id]
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/1788231/pexels-photo-1788231.jpeg'
         },
         {
             name: 'Jurassic Park',
@@ -143,7 +152,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '127 min',
             rating: 8.1,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/733169/pexels-photo-733169.jpeg'
         },
         {
             name: 'The Lion King',
@@ -156,7 +166,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '88 min',
             rating: 8.5,
-            actors: [actors[0]._id]
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/3735345/pexels-photo-3735345.jpeg'
         },
         {
             name: 'The Godfather',
@@ -169,7 +180,8 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '175 min',
             rating: 9.2,
-            actors: [actors[1]._id]
+            actors: [actors[1]._id],
+            thumbnail: 'https://images.pexels.com/photos/3494707/pexels-photo-3494707.jpeg'
         },
         {
             name: 'Pulp Fiction',
@@ -182,47 +194,9 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '154 min',
             rating: 8.9,
-            actors: [actors[0]._id]
-        },
-        {
-            name: 'Fight Club',
-            description: 'An insomniac office worker and a soap salesman build a global organization to help vent male aggression.',
-            type: movieTypes[0]._id,
-            categories: [categories[1]._id],
-            location: 'Various Locations',
-            languages: ['English'],
-            releaseDate: '1999-10-15',
-            quality: ['HD'],
-            duration: '139 min',
-            rating: 8.8,
-            actors: [actors[1]._id]
-        },
-        {
-            name: 'The Departed',
-            description: 'An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in Boston.',
-            type: movieTypes[1]._id,
-            categories: [categories[0]._id],
-            location: 'Boston, USA',
-            languages: ['English'],
-            releaseDate: '2006-10-06',
-            quality: ['HD'],
-            duration: '151 min',
-            rating: 8.5,
-            actors: [actors[0]._id]
-        },
-        {
-            name: 'The Prestige',
-            description: 'Two stage magicians engage in competitive one-upmanship in an attempt to create the ultimate stage illusion.',
-            type: movieTypes[2]._id,
-            categories: [categories[1]._id],
-            location: 'Various Locations',
-            languages: ['English'],
-            releaseDate: '2006-10-20',
-            quality: ['HD'],
-            duration: '130 min',
-            rating: 8.5,
-            actors: [actors[1]._id]
-        },
+            actors: [actors[0]._id],
+            thumbnail: 'https://images.pexels.com/photos/220017/pexels-photo-220017.jpeg'
+        }
     ];
 
     await Movie.deleteMany({});

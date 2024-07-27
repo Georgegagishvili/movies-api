@@ -14,6 +14,11 @@ const MovieSchema = mongoose.Schema(
             required: true,
             default: null,
         },
+        thumbnail: {
+            type: String,
+            required: true,
+            default: null,
+        },
         type:{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'MovieType',
