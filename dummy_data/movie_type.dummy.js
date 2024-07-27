@@ -1,11 +1,11 @@
 const MovieType = require("../models/movie_type.model");
 
 const movieTypes = [
-    { type: 'Feature' },
-    { type: 'Short' },
-    { type: 'Documentary' },
-    { type: 'Animation' },
-    { type: 'TV Series' },
+    { name: 'Feature' },
+    { name: 'Short' },
+    { name: 'Documentary' },
+    { name: 'Animation' },
+    { name: 'TV Series' },
   ];
 
 

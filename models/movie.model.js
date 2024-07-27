@@ -21,7 +21,9 @@ const MovieSchema = mongoose.Schema(
             default: null,
         },
         categories:{
-            type: [Category.Schema],
+            type: [{
+                type: mongoose.Types.ObjectId, ref: 'Category'
+            }],
             required: true,
             default: [],
         },
@@ -55,7 +57,10 @@ const MovieSchema = mongoose.Schema(
             required: true,
         },
         actors: {
-            type: [Actor.Schema],
+            type: [{
+                type: mongoose.Types.ObjectId,
+                ref: 'Actor',
+            }],
             required: true,
             default: []
         }
