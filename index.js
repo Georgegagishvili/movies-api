@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const movieRoute = require('./routes/movie.route');
+const categoryRoute = require('./routes/category.route')
 const { insertActors } = require('./dummy_data/actors.dummy');
 const { insertMovieTypes } = require('./dummy_data/movie_type.dummy');
 const { insertCategories } = require('./dummy_data/categorries.dummy');
@@ -10,12 +11,14 @@ const app = express();
 
 // Middleware
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 dotenv.config()
 
 // Routes
 
 app.use('/api/movies', movieRoute)
+
+app.use('/api/categories', categoryRoute)
 
 app.get('/', (_, res) => {
     res.send("Hello World")

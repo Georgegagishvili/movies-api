@@ -1,12 +1,19 @@
+const { default: mongoose } = require('mongoose')
 const Movie = require('../models/movie.model.js')
 
 const getMovies = async (req, res) => {
     try {
         const { name } = req.query
+        const { category } = req.query
         let query = {}
         if (name) {
             query.name = { $regex: name, $options: 'i' };
         }
+
+        if (category && mongoose.Types.ObjectId.isValid(category)) {
+            query.categories = { $in: category }
+        }
+
         const movies = await Movie.find(query)
             .populate('type')
             .exec()
