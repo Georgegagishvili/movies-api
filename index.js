@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const movieRoute = require('./routes/movie.route');
 const categoryRoute = require('./routes/category.route')
 const actorRoute = require('./routes/actor.route')
+const movieTypesRoute = require('./routes/movie_types.route')
 const { insertActors } = require('./dummy_data/actors.dummy');
 const { insertMovieTypes } = require('./dummy_data/movie_type.dummy');
 const { insertCategories } = require('./dummy_data/categorries.dummy');
@@ -20,6 +21,7 @@ dotenv.config()
 app.use('/api/movies', movieRoute)
 app.use('/api/categories', categoryRoute)
 app.use('/api/actors', actorRoute)
+app.use('/api/movie-types', movieTypesRoute)
 
 app.get('/', (_, res) => {
     res.send("Hello World")

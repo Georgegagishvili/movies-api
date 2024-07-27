@@ -6,6 +6,7 @@ const getMovies = async (req, res) => {
         const { name } = req.query
         const { category } = req.query
         const { actor } = req.query
+        const { type } = req.query
         let query = {}
         if (name) {
             query.name = { $regex: name, $options: 'i' };
@@ -19,18 +20,20 @@ const getMovies = async (req, res) => {
             query.actors = { $in: actor }
         }
 
-        const movies = await Movie.find(query)
-            .populate('type')
-            .exec()
+        if(type && mongoose.Types.ObjectId.isValid(type)){
+            query.type = type
+        }
 
-        const result = movies.map(movie => ({
-            ...movie.toObject(),
-            type: movie.type ? movie.type.name : null,
-        }))
+        const movies = await Movie.find(query)
+            .populate({
+                path: 'type',
+                select: '-__v -createdAt -updatedAt',
+            })
+            .exec()
 
         res.status(200).json({
             success: true,
-            data: result,
+            data: movies,
         })
     } catch (err) {
         ///ToDo replace
@@ -49,7 +52,10 @@ const getSingleMovie = async (req, res) => {
             path: 'actors',
             select: '-createdAt -updatedAt -__v',
         })
-        .populate('type')
+        .populate({
+            path: 'type',
+            select: '-createdAt -updatedAt -__v'
+        })
         .populate({
             path: 'categories',
             select: '-createdAt -updatedAt -__v'

@@ -4,7 +4,7 @@ const Movie = require("../models/movie.model");
 const MovieType = require("../models/movie_type.model");
 
 async function insertMovies() {
-    const movieTypes = await MovieType.find().limit(1);
+    const movieTypes = await MovieType.find().limit(5);
     const categories = await Category.find().limit(2);
     const actors = await Actor.find().limit(2);
 
@@ -17,7 +17,7 @@ async function insertMovies() {
         {
             name: 'The Avengers',
             description: 'A group of superheroes unite to save the world.',
-            type: movieTypes[0]._id,
+            type: movieTypes[3]._id,
             categories: [categories[0]._id, categories[1]._id],
             location: 'New York, USA',
             languages: ['English'],
