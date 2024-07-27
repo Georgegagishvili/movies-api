@@ -23,9 +23,12 @@ const categories = [
     }
   ];
 
-const insertCategories = async () => Category.insertMany(categories).then((docs) => {
+const insertCategories = async () =>{
+  await Category.deleteMany({});
+  await Category.insertMany(categories).then((docs) => {
     console.log('Dummy data inserted', docs);
-})
+  })
+}
 
 module.exports = {
     insertCategories,

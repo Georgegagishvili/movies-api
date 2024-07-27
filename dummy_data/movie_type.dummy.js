@@ -10,7 +10,8 @@ const movieTypes = [
 
 
   const insertMovieTypes = async () => {
-    MovieType.insertMany(movieTypes).then((docs) => {
+    await MovieType.deleteMany({});
+    await MovieType.insertMany(movieTypes).then((docs) => {
         console.log("Dummy Actors Inserted", docs);
     })
 }

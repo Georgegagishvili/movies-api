@@ -25,7 +25,7 @@ async function insertMovies() {
             quality: ['HD', '4K'],
             duration: '143 min',
             rating: 8.0,
-            actors: [actors[0], actors[1]]
+            actors: [actors[0]._id, actors[1]._id]
         },
         {
             name: 'Inception',
@@ -38,9 +38,11 @@ async function insertMovies() {
             quality: ['HD'],
             duration: '148 min',
             rating: 8.8,
-            actors: [actors[1]]
+            actors: [actors[1]._id]
         }
     ];
+
+    await Movie.deleteMany({});
 
     await Movie.insertMany(movies);
 }

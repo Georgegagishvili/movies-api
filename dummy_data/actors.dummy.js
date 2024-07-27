@@ -22,7 +22,8 @@ const actors = [
 ]
 
 const insertActors = async () => {
-    Actor.insertMany(actors).then((docs) => {
+    await Actor.deleteMany({});
+    await Actor.insertMany(actors).then((docs) => {
         console.log("Dummy Actors Inserted", docs);
     })
 }
