@@ -5,6 +5,7 @@ const getMovies = async (req, res) => {
     try {
         const { name } = req.query
         const { category } = req.query
+        const { actor } = req.query
         let query = {}
         if (name) {
             query.name = { $regex: name, $options: 'i' };
@@ -12,6 +13,10 @@ const getMovies = async (req, res) => {
 
         if (category && mongoose.Types.ObjectId.isValid(category)) {
             query.categories = { $in: category }
+        }
+
+        if(actor && mongoose.Types.ObjectId.isValid(actor)){
+            query.actors = { $in: actor }
         }
 
         const movies = await Movie.find(query)
