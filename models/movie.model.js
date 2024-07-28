@@ -1,7 +1,4 @@
 const mongoose = require('mongoose')
-const Actor = require('./actor.model.js')
-const Category = require('./category.model.js')
-const MovieType = require('./movie_type.model.js')
 
 const MovieSchema = mongoose.Schema(
     {

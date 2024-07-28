@@ -20,7 +20,13 @@ const ActorSchema = mongoose.Schema(
             type: String,
             required: true,
             default: null,
-        }
+        },
+        movies: [{
+            type: mongoose.Types.ObjectId,
+            required: true,
+            default: [],
+            ref: 'Movie',
+        }]
     },
     {
         timestamps: true,

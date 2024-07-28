@@ -5,10 +5,7 @@ const movieRoute = require('./routes/movie.route');
 const categoryRoute = require('./routes/category.route')
 const actorRoute = require('./routes/actor.route')
 const movieTypesRoute = require('./routes/movie_types.route')
-const { insertActors } = require('./dummy_data/actors.dummy');
-const { insertMovieTypes } = require('./dummy_data/movie_type.dummy');
-const { insertCategories } = require('./dummy_data/categorries.dummy');
-const { insertMovies } = require('./dummy_data/movie.dummy');
+const insertData = require('./dummy_data/dummy_helper');
 const app = express();
 
 // Middleware
@@ -30,9 +27,6 @@ app.get('/', (_, res) => {
 mongoose.connect(process.env.MONGODB_HOST).then(() => {
     app.listen(3000, async () => {
         console.log("Server is running")
-        // await insertCategories();
-        // await insertActors();
-        // await insertMovieTypes();
-        // await insertMovies();
+        await insertData();
     })
 })
