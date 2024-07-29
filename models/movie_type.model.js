@@ -6,12 +6,12 @@ const MovieTypeSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        movies: [{
-            type: mongoose.Types.ObjectId,
-            ref: 'Movies',
-            required: true,
-            default: [],
-        }]
+        // movies: [{
+        //     type: mongoose.Types.ObjectId,
+        //     ref: 'Movies',
+        //     required: true,
+        //     default: [],
+        // }]
     },
     {
         timestamps: true,

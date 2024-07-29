@@ -11,12 +11,12 @@ const CategorySchema = mongoose.Schema(
             required: true,
             default: null,
         },
-        movies: [{
-            type: mongoose.Types.ObjectId,
-            required: true,
-            ref: 'Movie',
-            default: []
-        }]
+        // movies: [{
+        //     type: mongoose.Types.ObjectId,
+        //     required: true,
+        //     ref: 'Movie',
+        //     default: []
+        // }]
     },
     {
         timestamps: true,

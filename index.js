@@ -1,12 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const app = express();
 const dotenv = require('dotenv')
 const movieRoute = require('./routes/movie.route');
 const categoryRoute = require('./routes/category.route')
 const actorRoute = require('./routes/actor.route')
 const movieTypesRoute = require('./routes/movie_types.route')
 const insertData = require('./dummy_data/dummy_helper');
-const app = express();
 
 // Middleware
 app.use(express.json())
