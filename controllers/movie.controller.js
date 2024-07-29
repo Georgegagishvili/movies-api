@@ -3,7 +3,10 @@ const Movie = require('../models/movie.model.js')
 
 const getMovies = async (req, res) => {
     try {
-        const { name, category, actor, type } = req.query
+        const { name, category, actor, type} = req.query
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const offset = (page - 1) * limit
 
         let query = {}
         if (name) {
@@ -22,15 +25,25 @@ const getMovies = async (req, res) => {
             query.type = type
         }
 
+        const totalMovies = await Movie.countDocuments()
         const movies = await Movie.find(query)
+            .skip(offset)
+            .limit(limit)
             .populate({
                 path: 'type',
                 select: '-__v -createdAt -updatedAt',
             })
             .exec()
+            
 
         res.status(200).json({
             success: true,
+            paging:{
+                limit: limit,
+                page: page,
+                total: totalMovies,
+                totalPages: Math.ceil(totalMovies / limit)
+            },
             data: movies,
         })
     } catch (err) {

@@ -27,6 +27,6 @@ app.get('/', (_, res) => {
 mongoose.connect(process.env.MONGODB_HOST).then(() => {
     app.listen(3000, async () => {
         console.log("Server is running")
-        await insertData();
+        // await insertData();
     })
 })
