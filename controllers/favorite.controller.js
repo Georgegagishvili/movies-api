@@ -5,9 +5,7 @@ const { ID_IS_NOT_VALID, FAVORITE_EXISTS } = require('../utils/user.errors')
 
 const getFavorites = async (req, res) => {
     try {
-        const token = req.headers.authorization.replace("Bearer ", "")
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        const userId = decoded.userId
+        const userId = req.user.userId
 
         console.log(userId)
 
@@ -38,10 +36,8 @@ const getFavorites = async (req, res) => {
 
 const addToFavorites = async (req, res) => {
     try {
-        const token = req.headers.authorization.replace("Bearer ", "")
+        const userId = req.user.userId
         const { movieId } = req.params
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        const userId = decoded.userId
 
         if (!movieId || !mongoose.Types.ObjectId.isValid(movieId)) {
             return res.status(400).json({
@@ -82,10 +78,8 @@ const addToFavorites = async (req, res) => {
 
 const removeFromFavorites = async (req, res) => {
     try {
-        const token = req.headers.authorization.replace("Bearer ", "")
         const { movieId } = req.params
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        const userId = decoded.userId
+        const userId = req.user.userId
 
         const deletedFav = await Favorite.findOneAndDelete({ userId, movieId })
 
