@@ -50,7 +50,7 @@ const getMovies = async (req, res) => {
         ///ToDo replace
         res.status(500).json({
             success: false,
-            error: err
+            message: err
         })
     }
 }
